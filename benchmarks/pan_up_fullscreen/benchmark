@@ -1,0 +1,7 @@
+#!/bin/bash
+
+tty="/dev/$(ps -o tty= -p $$)"
+columns=$(tput cols < $tty)
+lines=$(tput lines < $tty)
+
+printf "\e[${lines}T"
