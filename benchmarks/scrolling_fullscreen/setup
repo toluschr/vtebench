@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 for _ in {0..100000}; do
     printf "y\n"

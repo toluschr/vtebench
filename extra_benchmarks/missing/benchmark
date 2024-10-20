@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Print a lot of "missing" glyphs.
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Update the entire grid as often as possible without scrolling.
 

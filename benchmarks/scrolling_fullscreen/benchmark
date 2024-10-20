@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Scroll all lines up with every line completely filled.
 

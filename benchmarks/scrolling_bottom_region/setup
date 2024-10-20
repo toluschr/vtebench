@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 tty="/dev/$(ps -o tty= -p $$)"
 lines=$(tput lines < $tty)
