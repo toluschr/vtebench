@@ -15,7 +15,7 @@ fn main() {
     let config = Config::parse();
 
     // Find all available benchmarks.
-    let mut loaders = bench::find_benchmarks(&config.benchmarks);
+    let mut loaders = bench::find_benchmarks(&config.benchmarks, &config.whitelist);
 
     // Run all benchmarks one at a time.
     let results: Vec<Results> = loaders

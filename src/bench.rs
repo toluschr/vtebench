@@ -31,7 +31,7 @@ impl Display for Error {
 }
 
 /// Find all benchmarks recursively in the specified location.
-pub fn find_benchmarks(paths: &[PathBuf]) -> Vec<BenchmarkLoader> {
+pub fn find_benchmarks(paths: &[PathBuf], names: &Vec<String>) -> Vec<BenchmarkLoader> {
     let mut benchmarks: HashMap<String, (Option<PathBuf>, Option<PathBuf>)> = HashMap::new();
 
     for path in paths {
@@ -47,11 +47,14 @@ pub fn find_benchmarks(paths: &[PathBuf]) -> Vec<BenchmarkLoader> {
 
             if let Some(name) = path.parent().and_then(|path| path.file_name()) {
                 let name = name.to_string_lossy().to_string();
-                let bench = benchmarks.entry(name).or_default();
-                match file_name.as_str() {
-                    "setup" => bench.0 = Some(path),
-                    "benchmark" => bench.1 = Some(path),
-                    _ => unreachable!(),
+
+                if names.len() == 0 || names.contains(&name) {
+                    let bench = benchmarks.entry(name).or_default();
+                    match file_name.as_str() {
+                        "setup" => bench.0 = Some(path),
+                        "benchmark" => bench.1 = Some(path),
+                        _ => unreachable!(),
+                    }
                 }
             }
         }

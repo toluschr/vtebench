@@ -1,6 +1,7 @@
 //! CLI argument parsing.
 
 use std::path::PathBuf;
+use std::string::String;
 
 use clap::Parser;
 
@@ -14,6 +15,10 @@ pub struct Config {
     /// Benchmark source directories.
     #[clap(short, long, value_name = "DIRECTORY", default_value = "./benchmarks")]
     pub benchmarks: Vec<PathBuf>,
+
+    /// Benchmark name.
+    #[clap(short, long, value_name = "WHITELIST")]
+    pub whitelist: Vec<String>,
 
     /// Number of warmup iterations.
     #[clap(long, value_name = "NUM", default_value = "1")]
